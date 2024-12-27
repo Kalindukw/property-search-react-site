@@ -1,0 +1,142 @@
+[
+    {
+      "id": 1,
+      "type": "house",
+      "price": 350000,
+      "bedrooms": 3,
+      "dateAdded": "2023-05-01",
+      "postcode": "BR1 1AA",
+      "shortDescription": "Beautiful 3-bedroom house in Bromley",
+      "longDescription": "This stunning 3-bedroom house offers spacious living areas, a modern kitchen, and a lovely garden. Perfect for families!",
+      "images": [
+        "/images/properties/property1/image1.jpg",
+        "/images/properties/property1/image2.jpg",
+        "/images/properties/property1/image3.jpg",
+        "/images/properties/property1/image4.jpg",
+        "/images/properties/property1/image5.jpg",
+        "/images/properties/property1/image6.jpg"
+      ],
+      "floorPlan": "/images/properties/property1/floorplan.jpg",
+      "mapLocation": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2486.7713416179078!2d0.0177913!3d51.4023388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a9c0f00eb8a1%3A0x7c2d48e8c7e3f3b!2sBromley%2C%20UK!5e0!3m2!1sen!2sus!4v1651439843246!5m2!1sen!2sus"
+    },
+    {
+      "id": 2,
+      "type": "flat",
+      "price": 250000,
+      "bedrooms": 2,
+      "dateAdded": "2023-05-05",
+      "postcode": "NW1 6XE",
+      "shortDescription": "Modern 2-bedroom flat in Camden",
+      "longDescription": "A stylish 2-bedroom flat in the heart of Camden. Features an open-plan living area, high-end appliances, and a balcony with city views.",
+      "images": [
+        "/images/properties/property2/image1.jpg",
+        "/images/properties/property2/image2.jpg",
+        "/images/properties/property2/image3.jpg",
+        "/images/properties/property2/image4.jpg",
+        "/images/properties/property2/image5.jpg",
+        "/images/properties/property2/image6.jpg"
+      ],
+      "floorPlan": "/images/properties/property2/floorplan.jpg",
+      "mapLocation": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.4095029952947!2d-0.1427443!3d51.5390263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761ae3c3f7be4f%3A0x2e8c7d2fe2ac463f!2sCamden%20Town%2C%20London%2C%20UK!5e0!3m2!1sen!2sus!4v1651439994246!5m2!1sen!2sus"
+    },
+    {
+      "id": 3,
+      "type": "house",
+      "price": 500000,
+      "bedrooms": 4,
+      "dateAdded": "2023-05-10",
+      "postcode": "SW1A 1AA",
+      "shortDescription": "Luxurious 4-bedroom house in Westminster",
+      "longDescription": "An elegant 4-bedroom house in the prestigious Westminster area. Features high ceilings, period features, and a private garden.",
+      "images": [
+        "/images/properties/property3/image1.jpg",
+        "/images/properties/property3/image2.jpg",
+        "/images/properties/property3/image3.jpg",
+        "/images/properties/property3/image4.jpg",
+        "/images/properties/property3/image5.jpg",
+        "/images/properties/property3/image6.jpg"
+      ],
+      "floorPlan": "/images/properties/property3/floorplan.jpg",
+      "mapLocation": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.6801376037283!2d-0.1323004!3d51.5009088!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487604c56b6c7eb3%3A0x2b8b1c0c9287b5!2sWestminster%2C%20London%2C%20UK!5e0!3m2!1sen!2sus!4v1651440094246!5m2!1sen!2sus"
+    },
+    {
+      "id": 4,
+      "type": "flat",
+      "price": 300000,
+      "bedrooms": 1,
+      "dateAdded": "2023-05-15",
+      "postcode": "E1 6AN",
+      "shortDescription": "Stylish 1-bedroom flat in Shoreditch",
+      "longDescription": "A trendy 1-bedroom flat in the heart of Shoreditch. Features exposed brick walls, high ceilings, and modern amenities.",
+      "images": [
+        "/images/properties/property4/image1.jpg",
+        "/images/properties/property4/image2.jpg",
+        "/images/properties/property4/image3.jpg",
+        "/images/properties/property4/image4.jpg",
+        "/images/properties/property4/image5.jpg",
+        "/images/properties/property4/image6.jpg"
+      ],
+      "floorPlan": "/images/properties/property4/floorplan.jpg",
+      "mapLocation": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.5433203919244!2d-0.0765083!3d51.5236597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761cb3a89658c5%3A0x7e7c46f214342735!2sShoreditch%2C%20London%2C%20UK!5e0!3m2!1sen!2sus!4v1651440194246!5m2!1sen!2sus"
+    },
+    {
+      "id": 5,
+      "type": "house",
+      "price": 750000,
+      "bedrooms": 5,
+      "dateAdded": "2023-05-20",
+      "postcode": "W8 7RG",
+      "shortDescription": "Spacious 5-bedroom house in Kensington",
+      "longDescription": "A grand 5-bedroom house in the exclusive Kensington area. Features multiple reception rooms, a large kitchen, and a beautiful private garden.",
+      "images": [
+        "/images/properties/property5/image1.jpg",
+        "/images/properties/property5/image2.jpg",
+        "/images/properties/property5/image3.jpg",
+        "/images/properties/property5/image4.jpg",
+        "/images/properties/property5/image5.jpg",
+        "/images/properties/property5/image6.jpg"
+      ],
+      "floorPlan": "/images/properties/property5/floorplan.jpg",
+      "mapLocation": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2484.1673285733986!2d-0.1935713!3d51.5008827!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48760ff3578ca69d%3A0x4edb45d349e0d5ea!2sKensington%2C%20London%2C%20UK!5e0!3m2!1sen!2sus!4v1651440294246!5m2!1sen!2sus"
+    },
+    {
+      "id": 6,
+      "type": "flat",
+      "price": 400000,
+      "bedrooms": 3,
+      "dateAdded": "2023-05-25",
+      "postcode": "SE1 7PB",
+      "shortDescription": "Riverside 3-bedroom flat in Southwark",
+      "longDescription": "A stunning 3-bedroom flat with river views in Southwark. Features floor-to-ceiling windows, a modern kitchen, and access to communal gardens.",
+      "images": [
+        "/images/properties/property6/image1.jpg",
+        "/images/properties/property6/image2.jpg",
+        "/images/properties/property6/image3.jpg",
+        "/images/properties/property6/image4.jpg",
+        "/images/properties/property6/image5.jpg",
+        "/images/properties/property6/image6.jpg"
+      ],
+      "floorPlan": "/images/properties/property6/floorplan.jpg",
+      "mapLocation": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.5447310426547!2d-0.0917663!3d51.5035901!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48760349331f38dd%3A0xa8bf49dde1d56467!2sSouthwark%2C%20London%2C%20UK!5e0!3m2!1sen!2sus!4v1651440394246!5m2!1sen!2sus"
+    },
+    {
+      "id": 7,
+      "type": "house",
+      "price": 600000,
+      "bedrooms": 4,
+      "dateAdded": "2023-05-30",
+      "postcode": "N1 9AG",
+      "shortDescription": "Charming 4-bedroom house in Islington",
+      "longDescription": "A beautiful 4-bedroom Victorian house in Islington. Features original period details, a modern extension, and a landscaped garden.",
+      "images": [
+        "/images/properties/property7/image1.jpg",
+        "/images/properties/property7/image2.jpg",
+        "/images/properties/property7/image3.jpg",
+        "/images/properties/property7/image4.jpg",
+        "/images/properties/property7/image5.jpg",
+        "/images/properties/property7/image6.jpg"
+      ],
+      "floorPlan": "/images/properties/property7/floorplan.jpg",
+      "mapLocation": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.2098176139088!2d-0.1028623!3d51.5385493!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761b6d3b9c2dd5%3A0xc78f259fb8a20185!2sIslington%2C%20London%2C%20UK!5e0!3m2!1sen!2sus!4v1651440494246!5m2!1sen!2sus"
+    }
+  ]
