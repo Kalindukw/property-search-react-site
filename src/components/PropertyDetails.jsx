@@ -1,76 +1,89 @@
-import React, { useState } from "react";
-import { useParams } from "react-router-dom";
-import { Container, Row, Col, Image, Button } from "react-bootstrap";
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import "react-tabs/style/react-tabs.css";
+import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { properties } from '../data/properties';
+import GoogleMapReact from 'google-map-react';
+import ImageGallery from './ImageGallery';
 
-const PropertyDetails = ({ properties, addToFavorites }) => {
+function PropertyDetail() {
   const { id } = useParams();
-  const property = properties.find((p) => p.id === id); // Removed parseInt
-  const [activeTab, setActiveTab] = useState(0);
+  const property = properties.find(p => p.id === parseInt(id));
+  const [activeTab, setActiveTab] = useState('description');
 
   if (!property) {
-    return <div>Property not found</div>;
+    return <div className="container">Property not found</div>;
   }
 
   return (
-    <Container className="mt-4">
-      <h1>
-        {property.type} in {property.location}
-      </h1>
-      <Row className="mb-4">
-        <Col md={8}>
-          <Image
-            src={property.picture}
-            alt={property.description}
-            className="w-100 mb-3"
-            style={{ maxHeight: "500px", objectFit: "cover" }}
+    <div className="container">
+      <div className="row">
+        <div className="col-md-8">
+          <img
+            src={property.mainImage}
+            alt={property.title}
+            className="property-detail-image mb-4"
           />
-        </Col>
-        <Col md={4}>
-          <h2>£{property.price.toLocaleString()}</h2>
-          <p>
-            <strong>Type:</strong> {property.type}
-            <br />
-            <strong>Bedrooms:</strong> {property.bedrooms}
-            <br />
-            <strong>Tenure:</strong> {property.tenure}
-            <br />
-            <strong>Date Added:</strong>{" "}
-            {`${property.added.month} ${property.added.day}, ${property.added.year}`}
-          </p>
-          <Button
-            variant="primary"
-            className="w-100"
-            onClick={() => addToFavorites(property)}
-          >
-            Add to Favorites
-          </Button>
-        </Col>
-      </Row>
-      <Tabs selectedIndex={activeTab} onSelect={(index) => setActiveTab(index)}>
-        <TabList>
-          <Tab>Description</Tab>
-          <Tab>Floor Plan</Tab>
-          <Tab>Map</Tab>
-        </TabList>
-        <TabPanel>
-          <div
-            className="property-description"
-            dangerouslySetInnerHTML={{ __html: property.description }}
-          />
-        </TabPanel>
-        <TabPanel>
-          {/* Add your floor plan image when available */}
-          <p>Floor plan coming soon</p>
-        </TabPanel>
-        <TabPanel>
-          {/* Add your map iframe when available */}
-          <p>Map location coming soon</p>
-        </TabPanel>
-      </Tabs>
-    </Container>
-  );
-};
+          
+          <ImageGallery images={property.images} />
+        </div>
 
-export default PropertyDetails;
+        <div className="col-md-4">
+          <h2>{property.title}</h2>
+          <h3 className="text-primary">£{property.price.toLocaleString()}</h3>
+          <p>{property.description}</p>
+          <ul className="list-unstyled">
+            <li>Bedrooms: {property.bedrooms}</li>
+            <li>Bathrooms: {property.bathrooms}</li>
+            <li>Area: {property.area} sq ft</li>
+            <li>Postcode: {property.postcode}</li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="row mt-4">
+        <div className="col-12">
+          <ul className="nav nav-tabs">
+            <li className="nav-item">
+              <button 
+                className={`nav-link ${activeTab === 'description' ? 'active' : ''}`}
+                onClick={() => setActiveTab('description')}
+              >
+                Description
+              </button>
+            </li>
+            <li className="nav-item">
+              <button 
+                className={`nav-link ${activeTab === 'map' ? 'active' : ''}`}
+                onClick={() => setActiveTab('map')}
+              >
+                Map
+              </button>
+            </li>
+          </ul>
+
+          <div className="tab-content mt-3">
+            {activeTab === 'description' && (
+              <div>{property.longDescription}</div>
+            )}
+            {activeTab === 'map' && (
+              <div style={{ height: '400px', width: '100%' }}>
+                <GoogleMapReact
+                  bootstrapURLKeys={{ key: 'YOUR_GOOGLE_MAPS_API_KEY' }}
+                  defaultCenter={property.location}
+                  defaultZoom={15}
+                >
+                  <div
+                    lat={property.location.lat}
+                    lng={property.location.lng}
+                    className="map-marker"
+                  />
+                </GoogleMapReact>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default PropertyDetail; 
