@@ -1,42 +1,99 @@
 import React from "react";
-import { Row, Col, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const PropertyList = ({ properties }) => {
+const PropertyList = ({ properties, favorites = [], onFavoriteToggle }) => {
+  // Function to format date
+  const formatDate = (dateString) => {
+    if (!dateString) return '';
+    
+    const date = new Date(dateString);
+    if (isNaN(date.getTime())) return '';
+    
+    return date.toLocaleDateString('en-GB', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    });
+  };
+
+  // Function to format price
+  const formatPrice = (price) => {
+    return new Intl.NumberFormat('en-GB', {
+      style: 'currency',
+      currency: 'GBP'
+    }).format(price);
+  };
+
+  // Check if a property is in favorites
+  const isPropertyFavorite = (propertyId) => {
+    return favorites.some(fav => fav.id === propertyId);
+  };
+
   return (
-    <Row>
-      {properties.map((property) => (
-        <Col key={property.id} md={4} className="mb-4">
-          <Card>
-            <Card.Img
-              variant="top"
-              src={property.picture}
-              alt={property.description.substring(0, 100)}
+    <div className="row g-4">
+      {properties && properties.map((property) => (
+        <div key={property.id} className="col-md-4">
+          <div className="card h-100">
+            <img
+              src={property.images[0]}
+              className="card-img-top"
+              alt={property.title}
+              style={{ height: '200px', objectFit: 'cover' }}
+              onError={(e) => {
+                e.target.src = 'https://via.placeholder.com/300x200?text=No+Image';
+              }}
             />
-            <Card.Body>
-              <Card.Title>
-                {property.type} in {property.location}
-              </Card.Title>
-              <Card.Text>
-                <strong>Price:</strong> £{property.price.toLocaleString()}
-                <br />
-                <strong>Type:</strong> {property.type}
-                <br />
-                <strong>Bedrooms:</strong> {property.bedrooms}
-                <br />
-                <strong>Tenure:</strong> {property.tenure}
-                <br />
-                <strong>Added:</strong>{" "}
-                {`${property.added.month} ${property.added.day}, ${property.added.year}`}
-              </Card.Text>
-              <Link to={`/property/${property.id}`} className="btn btn-primary">
-                View Details
-              </Link>
-            </Card.Body>
-          </Card>
-        </Col>
+            <div className="card-body">
+              <h5 className="card-title">{property.title}</h5>
+              <p className="card-text">
+                <small className="text-muted">
+                  {property.type.charAt(0).toUpperCase() + property.type.slice(1)}
+                </small>
+              </p>
+              <p className="card-text">
+                {property.bedrooms} bed • {property.bathrooms} bath
+              </p>
+              <p className="card-text">
+                <strong>{formatPrice(property.price)}</strong>
+              </p>
+              <p className="card-text">
+                <small className="text-muted">
+                  Added: {formatDate(property.dateAdded)}
+                </small>
+              </p>
+              <p className="card-text">
+                <small className="text-muted">
+                  {property.postcode}
+                </small>
+              </p>
+            </div>
+            <div className="card-footer bg-white border-top-0">
+              <div className="d-flex justify-content-between align-items-center gap-2">
+                <Link 
+                  to={`/property/${property.id}`} 
+                  className="btn btn-primary"
+                >
+                  View Details
+                </Link>
+                <button
+                  onClick={() => onFavoriteToggle(property)}
+                  className={`btn ${isPropertyFavorite(property.id) ? 'btn-danger' : 'btn-outline-danger'}`}
+                >
+                  {isPropertyFavorite(property.id) ? 'Remove Favorite' : 'Add Favorite'}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       ))}
-    </Row>
+      {(!properties || properties.length === 0) && (
+        <div className="col-12">
+          <div className="alert alert-info text-center">
+            No properties found matching your criteria.
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
 
