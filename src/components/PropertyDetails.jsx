@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { properties } from '../data/properties';
-import GoogleMapReact from 'google-map-react';
 import ImageGallery from './ImageGallery';
 
+import PropertyMap from "./PropertyMap"
 function PropertyDetail() {
   const { id } = useParams();
   const property = properties.find(p => p.id === parseInt(id));
@@ -12,16 +12,16 @@ function PropertyDetail() {
   if (!property) {
     return <div className="container">Property not found</div>;
   }
-
+  
   return (
     <div className="container">
       <div className="row">
         <div className="col-md-8">
-          <img
-            src={property.mainImage}
+          {/* <img
+            src={property.Main}
             alt={property.title}
             className="property-detail-image mb-4"
-          />
+          /> */}
           
           <ImageGallery images={property.images} />
         </div>
@@ -65,19 +65,21 @@ function PropertyDetail() {
               <div>{property.longDescription}</div>
             )}
             {activeTab === 'map' && (
-              <div style={{ height: '400px', width: '100%' }}>
-                <GoogleMapReact
-                  bootstrapURLKeys={{ key: 'YOUR_GOOGLE_MAPS_API_KEY' }}
-                  defaultCenter={property.location}
-                  defaultZoom={15}
-                >
-                  <div
-                    lat={property.location.lat}
-                    lng={property.location.lng}
-                    className="map-marker"
-                  />
-                </GoogleMapReact>
-              </div>
+              // <div style={{ height: '400px', width: '100%' }}>
+              //   <GoogleMapReact
+              //     bootstrapURLKeys={{ key: 'YOUR_GOOGLE_MAPS_API_KEY' }}
+              //     defaultCenter={property.location}
+              //     defaultZoom={15}
+              //   >
+              //     <div
+              //       lat={property.location.lat}
+              //       lng={property.location.lng}
+              //       className="map-marker"
+              //     />
+              //   </GoogleMapReact>
+              // </div>
+              <PropertyMap
+               location={property.location} />
             )}
           </div>
         </div>
