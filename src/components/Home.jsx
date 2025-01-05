@@ -1,65 +1,90 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import PropertyList from './PropertyList';
+import propertiesData from '../data/properties.json';
 import SearchForm from './SearchForm';
 
-function Home() {
-  const handleSearch = (criteria) => {
-    
-    console.log('Search criteria:', criteria);
+const Home = ({handleFavoriteToggle}) => {
+  const [searchResults, setSearchResults] = useState(propertiesData.properties);
+  const [favorites, setFavorites] = useState([]);
+
+  const handleSearch = (searchCriteria) => {
+    const filtered = propertiesData.properties.filter(property => {
+      if (searchCriteria.type && property.type !== searchCriteria.type) {
+        return false;
+      }
+      if (searchCriteria.minPrice && property.price < searchCriteria.minPrice) {
+        return false;
+      }
+      if (searchCriteria.maxPrice && property.price > searchCriteria.maxPrice) {
+        return false;
+      }
+      if (searchCriteria.minBedrooms && property.bedrooms < searchCriteria.minBedrooms) {
+        return false;
+      }
+      if (searchCriteria.maxBedrooms && property.bedrooms > searchCriteria.maxBedrooms) {
+        return false;
+      }
+      if (searchCriteria.postcode &&
+          !property.postcode.toLowerCase().startsWith(searchCriteria.postcode.toLowerCase())) {
+        return false;
+      }
+      if (searchCriteria.dateAdded) {
+        const propertyDate = new Date(property.dateAdded);
+        const searchDate = new Date(
+          searchCriteria.dateAdded.year,
+          searchCriteria.dateAdded.month,
+          searchCriteria.dateAdded.day
+        );
+        if (propertyDate < searchDate) {
+          return false;
+        }
+      }
+      return true;
+    });
+
+    setSearchResults(filtered);
   };
 
+  
+
   return (
-    <div className="container">
-      <div className="row justify-content-center">
-        <div className="col-md-10">
-          <div className="text-center mb-5">
+    <div>
+      <div className="container py-5">
+        <div className="row">
+          <div className="col-lg-8 mx-auto text-center">
             <h1 className="display-4 mb-4">Find Your Dream Home</h1>
-            <p className="lead">
-              Search through our extensive collection of properties
+            <p className="lead mb-5">
+              Discover the perfect property with DreamKey Realty. 
+              We make finding your ideal home simple and enjoyable.
             </p>
           </div>
-          
-          <SearchForm onSearch={handleSearch} />
-
-          <div className="row mt-5">
-            <div className="col-md-4">
-              <div className="card text-center mb-4">
-                <div className="card-body">
-                  <h3>Buy a Home</h3>
-                  <p>Find your place with an immersive photo experience</p>
-                  <Link to="/properties" className="btn btn-primary">
-                    Browse Homes
-                  </Link>
-                </div>
+        </div>
+        
+        {/* Search Form */}
+        <div className="row mb-5">
+          <div className="col-12">
+            <div className="card shadow-sm">
+              <div className="card-body">
+                <SearchForm onSearch={handleSearch} />
               </div>
             </div>
+          </div>
+        </div>
 
-            <div className="col-md-4">
-              <div className="card text-center mb-4">
-                <div className="card-body">
-                  <h3>Sell a Home</h3>
-                  <p>List your property with us for the best exposure</p>
-                  <button className="btn btn-primary">Contact Us</button>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-md-4">
-              <div className="card text-center mb-4">
-                <div className="card-body">
-                  <h3>Saved Homes</h3>
-                  <p>View your favorite properties all in one place</p>
-                  <Link to="/favorites" className="btn btn-primary">
-                    View Favorites
-                  </Link>
-                </div>
-              </div>
-            </div>
+        {/* Search Results */}
+        <div className="row">
+          <div className="col-12">
+            <h2 className="mb-4">Properties Found: {searchResults.length}</h2>
+            <PropertyList 
+              properties={searchResults} 
+              favorites={favorites} 
+              onFavoriteToggle={handleFavoriteToggle} 
+            />
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
-export default Home; 
+export default Home;
