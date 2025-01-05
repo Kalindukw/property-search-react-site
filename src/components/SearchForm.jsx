@@ -14,7 +14,7 @@ const SearchForm = ({ onSearch }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    console.log("e", e);
     // Convert date to match your JSON format
     let formattedDate = null;
     if (dateAdded) {
@@ -50,6 +50,7 @@ const SearchForm = ({ onSearch }) => {
       postcode: postcode ? postcode.trim().toUpperCase() : null,
     };
 
+
     // Filter out null values
     const cleanSearchCriteria = Object.fromEntries(
       Object.entries(searchCriteria).filter(([_, value]) => value !== null)
@@ -66,8 +67,8 @@ const SearchForm = ({ onSearch }) => {
             <Form.Label>Property Type</Form.Label>
             <Form.Select value={type} onChange={(e) => setType(e.target.value)}>
               <option value="any">Any</option>
-              <option value="House">House</option>
-              <option value="Flat">Flat</option>
+              <option value="house">House</option>
+              <option value="flat">Flat</option>
             </Form.Select>
           </Form.Group>
         </Col>
