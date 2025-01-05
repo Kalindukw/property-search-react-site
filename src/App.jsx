@@ -10,7 +10,7 @@ import { Container } from "react-bootstrap";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import Navbar from './components/Navbar.jsx';
-import Home from './components/Home.jsx';  
+import Home from './components/Home.jsx';
 import SearchForm from "./components/SearchForm.jsx";
 import PropertyList from "./components/PropertyList.jsx";
 import PropertyDetail from "./components/PropertyDetails.jsx";
@@ -18,9 +18,15 @@ import Favorites from "./components/Favorites.jsx";
 import { properties as propertiesData } from "./data/properties.json";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import AboutUs from './components/AboutUs';
+import Contact from './components/Contact';
+import Login from './components/Login';
+import SignUp from './components/SignUp';
 
 // Filter properties utility function
 const filterProperties = (properties, filters) => {
+  console.log("properties", properties);
+  console.log("filters", filters);
   return properties.filter((property) => {
     const matchType =
       !filters.type || filters.type === "any" || property.type === filters.type;
@@ -80,15 +86,29 @@ const Layout = ({ properties, favorites, handleSearch, onFavoriteToggle, clearFa
 };
 
 function App() {
+  // Initialize filtered properties state
   const [filteredProperties, setFilteredProperties] = useState(propertiesData);
-  const [favorites, setFavorites] = useState([]);
-
-  useEffect(() => {
-    const savedFavorites = localStorage.getItem('favorites');
-    if (savedFavorites) {
-      setFavorites(JSON.parse(savedFavorites));
+  
+  // Initialize favorites with proper error handling
+  const [favorites, setFavorites] = useState(() => {
+    try {
+      const saved = localStorage.getItem('favorites');
+      return saved ? JSON.parse(saved) : [];
+    } catch (error) {
+      console.error('Error loading favorites from localStorage:', error);
+      return [];
     }
-  }, []);
+  });
+
+  // Save favorites to localStorage whenever they change
+  useEffect(() => {
+    try {
+      localStorage.setItem('favorites', JSON.stringify(favorites));
+      console.log('Favorites saved:', favorites);
+    } catch (error) {
+      console.error('Error saving favorites to localStorage:', error);
+    }
+  }, [favorites]);
 
   const handleSearch = (filters) => {
     const filtered = filterProperties(propertiesData, filters);
@@ -96,17 +116,30 @@ function App() {
   };
 
   const handleFavoriteToggle = (property) => {
-    const newFavorites = favorites.find(fav => fav.id === property.id)
-      ? favorites.filter(fav => fav.id !== property.id)
-      : [...favorites, property];
-    
-    setFavorites(newFavorites);
-    localStorage.setItem('favorites', JSON.stringify(newFavorites));
+    console.log('Received property:', property); // Check the full property object
+    if (!property || !property.id) {
+      console.error('Invalid property object passed to toggle:', property);
+      return;
+    }
+  
+    setFavorites((prevFavorites) => {
+      const isAlreadyFavorite = prevFavorites.some((fav) => fav.id === property.id);
+      if (isAlreadyFavorite) {
+        console.log('Removing favorite:', property.id);
+        return prevFavorites.filter((fav) => fav.id !== property.id);
+      } else {
+        console.log('Adding favorite:', property.id);
+        return [...prevFavorites, property];
+      }
+    });
   };
+  
+  
 
   const clearFavorites = () => {
     setFavorites([]);
     localStorage.removeItem('favorites');
+    console.log('Favorites cleared');
   };
 
   const router = createBrowserRouter(
@@ -122,10 +155,7 @@ function App() {
           />
         }
       >
-        <Route
-          path="/"
-          element={<Home />}
-        />
+        <Route path="/" element={<Home handleFavoriteToggle={handleFavoriteToggle} />} />
         <Route
           path="/properties"
           element={
@@ -139,10 +169,7 @@ function App() {
             </>
           }
         />
-        <Route
-          path="/property/:id"
-          element={<PropertyDetail />}
-        />
+        <Route path="/property/:id" element={<PropertyDetail />} />
         <Route
           path="/favorites"
           element={
@@ -153,6 +180,10 @@ function App() {
             />
           }
         />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
       </Route>
     )
   );
@@ -160,4 +191,4 @@ function App() {
   return <RouterProvider router={router} />;
 }
 
-export default App; 
+export default App;
