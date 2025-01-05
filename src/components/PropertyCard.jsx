@@ -1,9 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faBed, faBath, faRuler } from '@fortawesome/free-solid-svg-icons';
+import { Heart } from 'lucide-react';
 
-function PropertyCard({ property, onFavoriteToggle, isFavorite }) {
+/**
+ * PropertyCard component displays individual property information
+ * @param {Object} props
+ * @param {Object} props.property - Property details
+ * @param {function} props.onFavoriteToggle - Function to handle favorite toggling
+ * @param {boolean} props.isFavorite - Whether the property is favorited
+ */
+const PropertyCard = ({ property, onFavoriteToggle, isFavorite }) => {
   const formatPrice = (price) => {
     return new Intl.NumberFormat('en-GB', {
       style: 'currency',
@@ -13,56 +19,44 @@ function PropertyCard({ property, onFavoriteToggle, isFavorite }) {
   };
 
   const handleFavoriteClick = (e) => {
-    e.preventDefault(); // Prevent link navigation
+    e.preventDefault();
+    e.stopPropagation();
     onFavoriteToggle(property);
   };
 
   return (
-    <div className="card property-card mb-4 h-100">
-      <div className="position-relative">
+    <div className="relative flex flex-col bg-white rounded-lg shadow-lg overflow-hidden h-full">
+      <div className="relative">
         <img 
-          src={property.mainImage} 
-          className="card-img-top" 
+          src={property.mainImage || "/api/placeholder/400/300"} 
           alt={property.title}
-          style={{ height: '200px', objectFit: 'cover' }}
-        />
-        <button 
-          className={`btn position-absolute top-0 end-0 m-2 ${isFavorite ? 'btn-danger' : 'btn-outline-danger'}`}
-          onClick={handleFavoriteClick}
-        >
-          <FontAwesomeIcon icon={faHeart} />
-        </button>
+          className="w-full h-48 object-cover"
+        /> 
       </div>
-      <div className="card-body d-flex flex-column">
-        <h5 className="card-title">{property.title}</h5>
-        <h6 className="card-subtitle mb-2 text-primary fw-bold">
+      
+      <div className="p-4 flex-grow">
+        <h3 className="text-lg font-semibold mb-2">{property.title}</h3>
+        <p className="text-xl font-bold text-blue-600 mb-2">
           {formatPrice(property.price)}
-        </h6>
-        <p className="card-text text-muted small">
+        </p>
+        <p className="text-gray-600 text-sm mb-4">
           {property.description}
         </p>
+        
         <div className="mt-auto">
-          <div className="d-flex justify-content-between mb-3">
-            <span className="text-muted small">
-              <FontAwesomeIcon icon={faBed} className="me-1" />
-              {property.bedrooms} beds
-            </span>
-            <span className="text-muted small">
-              <FontAwesomeIcon icon={faBath} className="me-1" />
-              {property.bathrooms} baths
-            </span>
-            <span className="text-muted small">
-              <FontAwesomeIcon icon={faRuler} className="me-1" />
-              {property.area} sq ft
-            </span>
+          <div className="flex justify-between mb-4 text-sm text-gray-600">
+            <span>{property.bedrooms} beds</span>
+            <span>{property.bathrooms} baths</span>
+            <span>{property.area} sq ft</span>
           </div>
-          <div className="d-flex justify-content-between align-items-center">
-            <span className="badge bg-secondary">
+          
+          <div className="flex justify-between items-center">
+            <span className="px-2 py-1 bg-gray-200 rounded-md text-sm">
               {property.postcode}
             </span>
             <Link 
-              to={`/property/${property.id}`} 
-              className="btn btn-outline-primary"
+              to={`/property/${property.id}`}
+              className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
             >
               View Details
             </Link>
@@ -71,6 +65,6 @@ function PropertyCard({ property, onFavoriteToggle, isFavorite }) {
       </div>
     </div>
   );
-}
+};
 
-export default PropertyCard; 
+export default PropertyCard;
