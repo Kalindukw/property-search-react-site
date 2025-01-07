@@ -6,7 +6,7 @@ const ImageGallery = ({ images }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const handleClose = () => setShowModal(false);
-  const handleShow = (index) => {
+  const handleShow = (index) => { //open the modal and set the active image index
     setActiveIndex(index);
     setShowModal(true);
   };
