@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const PropertyList = ({ properties, favorites = [], onFavoriteToggle }) => {
-  // Function to format date
+  //  format date
   const formatDate = (dateString) => {
     if (!dateString) return '';
     
@@ -16,7 +16,7 @@ const PropertyList = ({ properties, favorites = [], onFavoriteToggle }) => {
     });
   };
 
-  // Function to format price
+  //  format price
   const formatPrice = (price) => {
     return new Intl.NumberFormat('en-GB', {
       style: 'currency',
