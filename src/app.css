@@ -9,6 +9,8 @@
   --dark: #212529;
   --body-bg: #ffffff;
   --body-color: #212529;
+  --bs-primary: #4361ee;
+  --bs-primary-rgb: 67, 97, 238;
 }
 
 /* Base styles */
@@ -66,6 +68,12 @@ body {
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   padding: 1rem;
   margin-bottom: 1rem;
+  border: none;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
 }
 
 /* Forms */
@@ -77,6 +85,11 @@ body {
   border: 1px solid #dee2e6;
   border-radius: 0.25rem;
   margin-bottom: 1rem;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.25);
+  border-color: var(--bs-primary);
 }
 
 /* Grid */
@@ -111,4 +124,33 @@ body {
   .col {
     flex: 0 0 100%;
   }
+}
+
+/* Custom styles to enhance Bootstrap */
+.navbar-brand {
+  font-weight: 700;
+}
+
+/* Optional: Custom background for auth pages */
+.auth-bg {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+/* Custom font import - you can choose a different font if you prefer */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@400;500;600&display=swap');
+
+/* Brand name styling */
+.navbar-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.brand-dream {
+  color: #4361ee; /* Primary blue color */
+}
+
+.brand-key {
+  color: #2d3748; /* Dark gray color */
 }
