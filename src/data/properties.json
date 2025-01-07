@@ -1,35 +1,193 @@
 {
 	"properties": [
-        {
-            "id":"prop1",
-			"type":"House",
-            "bedrooms":3,
-			"price":750000,
-			"tenure":"Freehold",
-			"description":"Attractive three bedroom semi-detached family home situated within 0.5 miles of Petts Wood station with fast trains to London and within easy walking distance of local shops, schools, bus routes and National Trust woodland. The property comprises; two receptions, fitted 18'9 x 10'1 kitchen/breakfast room and conservatory. The property also benefits from having a utility room and cloakroom. To the first floor there are three bedrooms and a family bathroom with separate WC. Additional features include double glazing, gas central heating and a well presented interior...",
-			"location":"Petts Wood Road, Petts Wood, Orpington BR5",
-			"picture":"images/prop1pic1small.jpg",
-			"url":"properties/prop1.html",
-            "added": {
-                "month":"October",
-                "day":12,
-                "year":2022
-            }
-        },
 		{
-            "id":"prop2",
-			"type":"Flat",
-            "bedrooms":2,
-			"price":399995,
-			"tenure":"Freehold",
-			"description":"Presented in excellent decorative order throughout is this two double bedroom, two bathroom, garden flat. <br>The modern fitted kitchen is open plan to the living room which boasts solid wooden floors and includes integrated appliances including a dishwasher & a washing machine. This large open plan benefits from bi folding doors onto a secluded private courtyard garden. Both bedrooms are double sized, and the family bathroom boasts a matching three piece suite a shower attachment over the bath. There is also a separate wet room. There are walnut doors throughout and wiring for Sky TV/aerial points in the living room/kitchen and both bedrooms.<br>This apartment being only five years old, is still under a 10 year building guarantee...",
-			"location":"Crofton Road Orpington BR6",
-			"picture":"images/prop2pic1small.jpg",
-			"url":"properties/prop2.html",
-            "added": {
-                "month":"September",
-                "day":14,
-                "year":2022
-            }
-        }
-]}
+			"id": 1,
+			"title": "Modern Luxury Villa",
+			"type": "house",
+			"price": 750000,
+			"bedrooms": 4,
+			"bathrooms": 3,
+			"postcode": "BR1 3EY",
+			"dateAdded": "2024-02-15",
+			"description": "Stunning modern villa with open plan living space and garden",
+			"longDescription": "This exceptional modern villa offers luxurious living with high-end finishes throughout. Features include a designer kitchen, spacious master suite, home office, and landscaped gardens. Perfect for modern family living with excellent local schools nearby.",
+			"images": [
+				"/Images/download (10).jpeg",
+				"/Images/21.jpg",
+				"/Images/22.jpg",
+				"/Images/23.jpg",
+				"/Images/24.jpg",
+				"/Images/25.jpg",
+				"/Images/26.jpg",
+				"/Images/27.jpeg"
+			],
+			"floorPlan": "/Images/03.jpg",
+			"location": {
+				"lat": 51.4095,
+				"lng": -0.0181
+			}
+		},
+		{
+			"id": 2,
+			"title": "City Centre Apartment",
+			"type": "flat",
+			"price": 425000,
+			"bedrooms": 2,
+			"bathrooms": 2,
+			"postcode": "NW1 6XE",
+			"dateAdded": "2024-03-01",
+			"description": "Contemporary apartment in prime location",
+			"longDescription": "Luxurious city centre apartment featuring floor-to-ceiling windows, modern appliances, and stunning city views. Includes secure parking, 24-hour concierge, and resident's gym. Walking distance to transport links and local amenities.",
+			"images": [
+				"/Images/10.jpg",
+				"/Images/31.webp",
+				"/Images/32.jpeg",
+				"/Images/33.jpg",
+				"/Images/34.png",
+				"/Images/35.jpg",
+				"/Images/36.avif",
+				"/Images/37.jpg"
+			],
+			"floorPlan": "/images/property2/floorplan.jpg",
+			"location": {
+				"lat": 51.5074,
+				"lng": -0.1278
+			}
+		},
+		{
+			"id": 3,
+			"title": "Victorian Family Home",
+			"type": "house",
+			"price": 895000,
+			"bedrooms": 5,
+			"bathrooms": 3,
+			"postcode": "SE13 7RT",
+			"dateAdded": "2024-01-20",
+			"description": "Beautifully restored Victorian property with period features",
+			"longDescription": "Magnificent Victorian family home retaining original features including fireplaces, cornicing, and stained glass windows. Modernized kitchen and bathrooms, plus a converted loft space. South-facing garden with mature plants and a garden office.",
+			"images": [
+				"/Images/images (5).jpeg",
+				"/Images/40.jpeg",
+				"/Images/41.avif",
+				"/Images/42.jpg",
+				"/Images/44.jpg",
+				"/Images/43.jfif",
+				"/Images/45.webp",
+				"/Images/46.jpg"
+			],
+			"floorPlan": "/images/property3/floorplan.jpg",
+			"location": {
+				"lat": 51.4613,
+				"lng": -0.0098
+			}
+		},
+		{
+			"id": 4,
+			"title": "Waterfront Studio",
+			"type": "flat",
+			"price": 299999,
+			"bedrooms": 1,
+			"bathrooms": 1,
+			"postcode": "E14 9RU",
+			"dateAdded": "2024-03-10",
+			"description": "Modern studio apartment with river views",
+			"longDescription": "Stylish studio apartment in a prestigious waterfront development. Features include integrated appliances, floor-to-ceiling windows, and a private balcony overlooking the river. Excellent transport links and amenities nearby.",
+			"images": [
+				"/Images/11.jpg",
+				"/Images/51.jpeg",
+				"/Images/52.jpg",
+				"/Images/53.jpg",
+				"/Images/58.jpeg",
+				"/Images/55.webp",
+				"/Images/56.jpeg",
+				"/Images/57.jpeg"
+			],
+			"floorPlan": "/images/property4/floorplan.jpg",
+			"location": {
+				"lat": 51.5074,
+				"lng": -0.0279
+			}
+		},
+		{
+			"id": 5,
+			"title": "Converted Warehouse",
+			"type": "flat",
+			"price": 650000,
+			"bedrooms": 2,
+			"bathrooms": 2,
+			"postcode": "N1 7GU",
+			"dateAdded": "2024-02-28",
+			"description": "Industrial-style loft apartment in converted warehouse",
+			"longDescription": "Stunning warehouse conversion featuring exposed brick walls, original beams, and double-height ceilings. Open-plan living space with mezzanine level, designer kitchen, and large windows. Includes secure parking and communal roof terrace.",
+			"images": [
+				"/Images/images (6).jpeg",
+				"/Images/62.avif",
+				"/Images/61.jpeg",
+				"/Images/63.jpeg",
+				"/Images/64.webp",
+				"/Images/27.jpeg",
+				"/Images/54.jpg"
+				
+			],
+			"floorPlan": "/images/property5/floorplan.jpg",
+			"location": {
+				"lat": 51.5362,
+				"lng": -0.0900
+			}
+		},
+		{
+			"id": 6,
+			"title": "Garden Cottage",
+			"type": "house",
+			"price": 475000,
+			"bedrooms": 3,
+			"bathrooms": 1,
+			"postcode": "BR2 8NT",
+			"dateAdded": "2024-03-05",
+			"description": "Charming cottage with beautiful garden",
+			"longDescription": "Delightful cottage offering character and charm with modern comforts. Features include inglenook fireplace, country-style kitchen, and established garden with fruit trees. Peaceful location with easy access to local amenities.",
+			"images": [
+				"/Images/12.webp",
+				"/Images/66.jpeg",
+				"/Images/67.jpeg",
+				"/Images/68.webp",
+				"/Images/69.jpg",
+				"/Images/51.jpeg",
+				"/Images/46.jpg"
+				
+			],
+			"floorPlan": "/images/property6/floorplan.jpg",
+			"location": {
+				"lat": 51.3889,
+				"lng": 0.0181
+			}
+		},
+		{
+			"id": 7,
+			"title": "Penthouse Suite",
+			"type": "flat",
+			"price": 1250000,
+			"bedrooms": 3,
+			"bathrooms": 3,
+			"postcode": "SW1 1AA",
+			"dateAdded": "2024-01-15",
+			"description": "Luxury penthouse with panoramic city views",
+			"longDescription": "Exceptional penthouse apartment offering luxury living at its finest. Features include wraparound terrace, high-spec kitchen, home automation system, and private lift access. Premium location with concierge service and secure parking.",
+			"images": [
+				"/Images/0x0.webp",
+				"/Images/images (3).jpeg",
+				"/Images/download (5).jpeg",
+				"/Images/download (6).jpeg",
+				"/Images/download (8).jpeg",
+				"/Images/download (9).jpeg",
+				"/Images/images (1).jpeg",
+				"/Images/images (2).jpeg"
+			],
+			"floorPlan": "/Images/images(3).jpeg",
+			"location": {
+				"lat": 51.4975,
+				"lng": -0.1357
+			}
+		}
+	]
+}
