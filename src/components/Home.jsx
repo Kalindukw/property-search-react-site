@@ -4,11 +4,14 @@ import propertiesData from '../data/properties.json';
 import SearchForm from './SearchForm';
 
 const Home = ({handleFavoriteToggle}) => {
+  // State to manage the list of properties matching the search criteria
   const [searchResults, setSearchResults] = useState(propertiesData.properties);
   const [favorites, setFavorites] = useState([]);
 
+  // Function to handle property search based on user input criteria
   const handleSearch = (searchCriteria) => {
     const filtered = propertiesData.properties.filter(property => {
+      // Filter properties by type if a type is specified
       if (searchCriteria.type && property.type !== searchCriteria.type) {
         return false;
       }
@@ -28,8 +31,9 @@ const Home = ({handleFavoriteToggle}) => {
           !property.postcode.toLowerCase().startsWith(searchCriteria.postcode.toLowerCase())) {
         return false;
       }
+      // Filter properties added before the specified date
       if (searchCriteria.dateAdded) {
-        const propertyDate = new Date(property.dateAdded);
+        const propertyDate = new Date(property.dateAdded); // Parse property date
         const searchDate = new Date(
           searchCriteria.dateAdded.year,
           searchCriteria.dateAdded.month,
@@ -41,7 +45,7 @@ const Home = ({handleFavoriteToggle}) => {
       }
       return true;
     });
-
+    //Update the state with the filtered results
     setSearchResults(filtered);
   };
 
