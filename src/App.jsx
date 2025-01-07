@@ -28,7 +28,7 @@ const filterProperties = (properties, filters) => {
   console.log("properties", properties);
   console.log("filters", filters);
   return properties.filter((property) => {
-    const matchType =
+    const matchType =  // Check if property matches the filters
       !filters.type || filters.type === "any" || property.type === filters.type;
 
     const matchPrice =
@@ -70,7 +70,7 @@ const Layout = ({ properties, favorites, handleSearch, onFavoriteToggle, clearFa
           <Container>
             <div className="row">
               <div className="col-md-6">
-                <p className="mb-0">© 2024 Real Estate App. All rights reserved.</p>
+                <p className="mb-0">© 2025 DreamKey Reality. All rights reserved.</p>
               </div>
               <div className="col-md-6 text-md-end">
                 <a href="#" className="text-decoration-none text-muted me-3">Privacy Policy</a>
