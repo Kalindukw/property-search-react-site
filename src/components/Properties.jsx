@@ -22,7 +22,7 @@ const Properties = () => {
           </div>
         </div>
 
-        {/* Add more property cards as needed */}
+        {/*  more property cards  */}
       </div>
     </div>
   );
